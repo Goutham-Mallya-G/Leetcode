@@ -3,14 +3,13 @@ class Solution {
         int[] ans = new int[2];
         HashMap <Integer , Integer> hash = new HashMap <>();
         for(int i=0 ; i<nums.length ; i++){
-            int num = nums[i];
-            int rem = target - num;
-            if(hash.containsKey(rem)){
-                ans[0] = hash.get(rem);
+            if(hash.containsKey(target - nums[i])){
+                ans[0] = hash.get(target - nums[i]);
                 ans[1] = i;
+                return ans;
             }
             hash.put(nums[i] , i);
         }
-        return ans;
+        return new int[] {-1,-1};
     }
 }
